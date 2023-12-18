@@ -2,6 +2,10 @@ name: Build Storybook
 
 run-name: Build Storybook
 
+env:
+  USER_NAME: ${{ secrets.USER_NAME }}
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+
 on: [push]
 
 jobs:
@@ -15,5 +19,7 @@ jobs:
       - run: yarn install
       - run: yarn build-storybook
       - run: git add .
+      - run: git config --global user.email $USER_EMAIL
+      - run: git config --global user.name $USER_NAME
       - run: git commit -m "docs(build):make the build of storybook"
       - run: git push origin main
