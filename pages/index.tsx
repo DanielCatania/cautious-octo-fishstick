@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <h1>Home</h1>
       <Button
-        backgroundColor="red"
+        backgroundColor="blue"
         color="white"
         style={{ margin: "1em" }}
         onClick={() => console.log("Click")}
