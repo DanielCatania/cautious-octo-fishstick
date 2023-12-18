@@ -5,14 +5,15 @@ run-name: Build Storybook
 on: [push]
 
 jobs:
-  Build storybook:
+  build-storybook:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
       - run: yarn install
       - run: yarn build-storybook
-  Upload changes:
-    runs-on: ubuntu-latest
-    steps:
       - run: git add .
-      - run: git commit -m "docs(build): make the build of storybook"
+      - run: git commit -m "docs(build):make the build of storybook"
       - run: git push origin main
